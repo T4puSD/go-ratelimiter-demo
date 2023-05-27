@@ -85,10 +85,10 @@ func main() {
 	}
 
 	limiter := &RateLimiter{
-		limit:       50,              // Maximum number of requests allowed
-		interval:    5 * time.Minute, // Time interval for rate limiting
-		redisClient: redisClient,     // Redis client instance
-		luaScriptID: luaScriptID,     // Lua script ID
+		limit:       10,          // Maximum number of requests allowed
+		interval:    time.Minute, // Time interval for rate limiting
+		redisClient: redisClient, // Redis client instance
+		luaScriptID: luaScriptID, // Lua script ID
 	}
 
 	// Apply rate limiting middleware to the desired routes

@@ -11,6 +11,16 @@ After ensuring that you can use the following command to start the server:
 go run ./main.go
 ```
 
+> Note: If your redis server is not running in default port or host or have a password set in redis then change the following code section in `main.go` file:   
+
+```go
+redisClient := redis.NewClient(&redis.Options{
+		Addr:     "localhost:6379", // Replace with your Redis server address
+		Password: "",               // Replace with your Redis password
+		DB:       0,                // Replace with the desired Redis database index
+	})
+```
+
 
 ### How to test the rate limiter
 To test the rate limiter in effect his the following endpoint
@@ -27,12 +37,10 @@ To change the default max limit and cooldown time window change the following pa
 - interval
 
 ```go
-
-	limiter := &RateLimiter{
-		limit:       10,          // Maximum number of requests allowed
-		interval:    time.Minute, // Time interval for rate limiting
-		redisClient: redisClient, // Redis client instance
-		luaScriptID: luaScriptID, // Lua script ID
-	}
-
+limiter := &RateLimiter{
+	limit:       10,          // Maximum number of requests allowed
+	interval:    time.Minute, // Time interval for rate limiting
+	redisClient: redisClient, // Redis client instance
+	luaScriptID: luaScriptID, // Lua script ID
+}
 ```

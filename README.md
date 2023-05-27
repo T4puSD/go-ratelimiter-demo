@@ -1,4 +1,4 @@
-### Rate Limiter
+## Rate Limiter
 A web server with go gin module to demonstrate rate limiting implementation with redis
 
 ### Dependencies
